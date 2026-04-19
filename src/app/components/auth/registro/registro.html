@@ -1,1 +1,36 @@
-<p>registro works!</p>
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card shadow-lg" style="width: 400px;">
+    <div class="card-body p-5">
+      <h3 class="text-center mb-4">Crear Cuenta</h3>
+      
+      <form (ngSubmit)="onRegistro()">
+        <div class="mb-3">
+          <label class="form-label">Nombre de Usuario</label>
+          <input type="text" name="username" class="form-control" [(ngModel)]="userData.username" required>
+        </div>
+        
+        <div class="mb-3">
+          <label class="form-label">Contraseña</label>
+          <input type="password" name="password" class="form-control" [(ngModel)]="userData.password" required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Rol</label>
+          <select name="rol" class="form-select" [(ngModel)]="userData.rol">
+            <option value="ADMIN">Administrador</option>
+          </select>
+        </div>
+
+        <div *ngIf="errorMessage" class="alert alert-danger py-2 small">
+          {{ errorMessage }}
+        </div>
+
+        <button type="submit" class="btn btn-success w-100 mt-3">Registrar</button>
+      </form>
+
+      <div class="text-center mt-3">
+        <small>¿Ya tienes cuenta? <a routerLink="/login">Inicia sesión</a></small>
+      </div>
+    </div>
+  </div>
+</div>
